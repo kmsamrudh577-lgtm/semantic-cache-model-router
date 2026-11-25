@@ -24,11 +24,16 @@ can handle it**, while logging the telemetry needed to prove the savings.
 ## Quick start
 
 ```bash
+git clone https://github.com/kmsamrudh577-lgtm/semantic-cache-model-router.git
+cd semantic-cache-model-router            # always run from inside the project folder
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-streamlit run app.py          # dashboard on http://localhost:8501
-python eval.py                # benchmark + threshold sweep -> results/
+streamlit run app.py --server.port 8502   # dashboard on http://localhost:8502
+python eval.py                            # benchmark + threshold sweep -> results/
 ```
+
+> The dashboard uses port **8502** so it never clashes with another Streamlit app on the default
+> port 8501. Check that the page title reads "Semantic Cache & Cost-Aware Model Router".
 
 **No API key? No problem.** With no key set, the app and `eval.py` use a deterministic
 **mock LLM** (same prompt → same answer, tokens and latency), so every number is reproducible.
